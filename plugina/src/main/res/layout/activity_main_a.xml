@@ -11,5 +11,13 @@
     android:layout_height="wrap_content"
     android:text="pluginA" />
 
+  <Button
+    android:id="@+id/id_plugin_btn1"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_below="@id/textView1"
+    android:text="start common"
+    />
+
 
 </RelativeLayout>

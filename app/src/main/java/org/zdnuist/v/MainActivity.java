@@ -15,7 +15,7 @@ import org.zdnuist.library.a.CommonUtil;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
 
-  private Button btn1;
+  private Button btn1,btn2;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -24,11 +24,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     btn1 = (Button) findViewById(R.id.button);
     btn1.setOnClickListener(this);
+    btn2 = (Button) findViewById(R.id.button2);
+    btn2.setOnClickListener(this);
 
     this.loadPlugin(this);
     Log.e("zd","MainActivity");
     CommonUtil._name = "abc";
     Log.e("zd","_name_host:" + CommonUtil._name);
+
   }
 
 
@@ -46,18 +49,22 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
   @Override
   public void onClick(View v) {
+    final String pkg = "org.zdnuist.plugin.a";
+    if (PluginManager.getInstance(this).getLoadedPlugin(pkg) == null) {
+      Toast.makeText(this, "plugin [org.zdnuist.plugin.a] not loaded", Toast.LENGTH_SHORT).show();
+      return;
+    }
     switch (v.getId()){
       case R.id.button:
-        final String pkg = "org.zdnuist.plugin.a";
-        if (PluginManager.getInstance(this).getLoadedPlugin(pkg) == null) {
-          Toast.makeText(this, "plugin [org.zdnuist.plugin.a] not loaded", Toast.LENGTH_SHORT).show();
-          return;
-        }
-
         // test Activity and Service
         Intent intent = new Intent();
         intent.setClassName(pkg, "org.zdnuist.plugin.a.PluginAActivity");
         startActivity(intent);
+        break;
+      case R.id.button2:
+        intent = new Intent();
+        intent.setClassName(pkg,"org.zdnuist.plugin.a.PluginAService");
+        startService(intent);
         break;
     }
   }
