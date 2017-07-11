@@ -1,4 +1,4 @@
-VirtualApkDemo:librarya:unspecified 19188
+VirtualApkDemo:librarya:unspecified 19401
 com.android.support.constraint:constraint-layout-solver:1.0.2 95560
 com.android.support.constraint:constraint-layout:1.0.2 38176
 com.android.support:animated-vector-drawable:25.3.1 15556

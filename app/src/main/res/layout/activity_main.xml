@@ -44,5 +44,19 @@
     app:layout_constraintTop_toBottomOf="@+id/button"
     tools:layout_constraintLeft_creator="1"
     app:layout_constraintLeft_toLeftOf="parent"/>
+  <Button
+    android:id="@+id/button3"
+    android:layout_width="0dp"
+    android:layout_height="48dp"
+    android:text="start plugin b"
+    tools:layout_constraintTop_creator="1"
+    tools:layout_constraintRight_creator="1"
+    android:layout_marginStart="16dp"
+    android:layout_marginEnd="13dp"
+    app:layout_constraintRight_toRightOf="@+id/button2"
+    android:layout_marginTop="10dp"
+    app:layout_constraintTop_toBottomOf="@+id/button2"
+    tools:layout_constraintLeft_creator="1"
+    app:layout_constraintLeft_toLeftOf="parent"/>
 
 </android.support.constraint.ConstraintLayout>
