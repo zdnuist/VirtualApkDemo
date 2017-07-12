@@ -15,7 +15,7 @@ import org.zdnuist.library.a.CommonUtil;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
 
-  private Button btn1,btn2,btn3;
+  private Button btn1,btn2,btn3,btn4;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -28,12 +28,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     btn2.setOnClickListener(this);
     btn3 = (Button) findViewById(R.id.button3);
     btn3.setOnClickListener(this);
+    btn4 = (Button) findViewById(R.id.button4);
+    btn4.setOnClickListener(this);
 
-    this.loadPlugin(this,"plugina-release-unsigned.apk");
-    this.loadPlugin(this,"pluginb-release-unsigned.apk");
+
     Log.e("zd","MainActivity");
     CommonUtil._name = "abc";
     Log.e("zd","_name_host:" + CommonUtil._name);
+
+    Toast.makeText(this, "第一次加载请先执行[LOAD PLUGIN]", Toast.LENGTH_SHORT).show();
 
   }
 
@@ -54,14 +57,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
   public void onClick(View v) {
     final String pkg = "org.zdnuist.plugin.a";
     final String pkg2 = "org.zdnuist.plugin.b";
-    if (PluginManager.getInstance(this).getLoadedPlugin(pkg) == null) {
-      Toast.makeText(this, "plugin [org.zdnuist.plugin.a] not loaded", Toast.LENGTH_SHORT).show();
-      return;
-    }
+    if(v.getId() != R.id.button4) {
+      if (PluginManager.getInstance(this).getLoadedPlugin(pkg) == null) {
+        Toast.makeText(this, "plugin [org.zdnuist.plugin.a] not loaded", Toast.LENGTH_SHORT).show();
+        return;
+      }
 
-    if (PluginManager.getInstance(this).getLoadedPlugin(pkg2) == null) {
-      Toast.makeText(this, "plugin [org.zdnuist.plugin.a] not loaded", Toast.LENGTH_SHORT).show();
-      return;
+      if (PluginManager.getInstance(this).getLoadedPlugin(pkg2) == null) {
+        Toast.makeText(this, "plugin [org.zdnuist.plugin.a] not loaded", Toast.LENGTH_SHORT).show();
+        return;
+      }
     }
     switch (v.getId()){
       case R.id.button:
@@ -79,6 +84,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         intent = new Intent();
         intent.setClassName(pkg2, "org.zdnuist.plugin.b.PluginBActivity");
         startActivity(intent);
+        break;
+      case R.id.button4:
+        this.loadPlugin(this,"plugina-release-unsigned.apk");
+        this.loadPlugin(this,"pluginb-release-unsigned.apk");
         break;
     }
   }

@@ -33,7 +33,8 @@ public class PluginAActivity extends AppCompatActivity implements View.OnClickLi
   public void onClick(View v) {
     switch (v.getId()){
       case R.id.id_plugin_btn1:
-        Intent intent = new Intent(this,CommonActivity.class);
+        Intent intent = new Intent();
+        intent.setClassName("org.zdnuist.v", "org.zdnuist.library.a.CommonActivity");
         startActivity(intent);
         break;
     }
