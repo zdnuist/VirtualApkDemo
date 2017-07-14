@@ -12,4 +12,7 @@ demo运行命令
 ```
  gradlew clean assemblePlugin
 ```
-将构建出来的plugin apk push到 /sdcard/目录
+将构建出来的plugin apk push到 /sdcard/目录  
+
+##### 交流群
+QQ: 570158423
