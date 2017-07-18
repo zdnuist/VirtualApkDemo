@@ -37,7 +37,7 @@ dependencies {
 apply plugin: 'com.didi.virtualapk.plugin'
 
 virtualApk {
-    packageId = 0x8f // the package id of Resources.
+    packageId = 0x5f // the package id of Resources.
     targetHost = '../VirtualApkDemo/app' // the path of application module in host project.
     applyHostMapping = true //optional, default value: true.
 }
